@@ -1,4 +1,4 @@
-Implemented audio from epub files, and added getPagesCount method for reflowable books.
+Implemented playing audio from epub files, and added getPagesCount method for reflowable books.
 
 # readium-js
 
