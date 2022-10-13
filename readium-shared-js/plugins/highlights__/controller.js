@@ -257,8 +257,8 @@ function($, _, Class, HighlightHelpers, HighlightGroup) {
 
         addSelectionHighlight: function(id, type, styles, clearSelection) {
             var CFI = this.getCurrentSelectionCFI();
-
             if (CFI) {
+
                 // if clearSelection is true
                 if (clearSelection) {
                     var iframeDocument = this.context.document;

@@ -7,8 +7,8 @@ function($, _, Class, TextLineInferrer, HighlightView, HighlightBorderView, High
         }, 10);
 
     var HighlightGroup = Class.extend({
-        init: function(context, options) {
 
+        init: function(context, options) {
             this.context = context;
 
             this.highlightViews = [];
@@ -35,9 +35,6 @@ function($, _, Class, TextLineInferrer, HighlightView, HighlightBorderView, High
             var triggerEvent = _.partial(topView.trigger, _, that.type,
                 that.CFI, that.id, event, documentFrame);
 
-
-            console.log('onHighlightEvent', event, type, that, documentFrame, topView, triggerEvent);
-
             if (type === "click" || type === "touchend") {
                 debouncedTrigger(triggerEvent, "annotationClicked");
 
@@ -62,7 +59,7 @@ function($, _, Class, TextLineInferrer, HighlightView, HighlightBorderView, High
                 };
                 if (event.button === 2) {
                     event.preventDefault();
-                    documentFramedocumentFrame.contentDocument.addEventListener("selectstart", preventEvent);
+                    documentFrame.contentDocument.addEventListener("selectstart", preventEvent);
                     documentFrame.contentDocument.addEventListener("mouseup", preventEvent);
                     documentFrame.contentDocument.addEventListener("click", preventEvent);
                     documentFrame.contentDocument.addEventListener("contextmenu", preventEvent);

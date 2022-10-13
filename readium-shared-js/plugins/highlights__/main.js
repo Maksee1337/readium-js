@@ -2,7 +2,6 @@ define(['readium_js_plugins', 'readium_shared_js/globals', './manager'], functio
     var config = {};
 
     Plugins.register("highlights", function (api) {
-
         var reader = api.reader, _highlightsManager, _initialized = false, _initializedLate = false;
 
         var self = this;
@@ -42,9 +41,6 @@ define(['readium_js_plugins', 'readium_shared_js/globals', './manager'], functio
 
         this.getHighlightsManager = function() {
             return _highlightsManager;
-        };
-        this.TEST = function() {
-            alert('highlights')
         };
 
         /**

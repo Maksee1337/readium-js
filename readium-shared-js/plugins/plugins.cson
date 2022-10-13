@@ -1,6 +1,8 @@
 # You may add the plugins that should be included here.
 plugins: [
    'highlights',
+#    'hypothesis',
+
 #   'example',
   'showInfo'
 ]
