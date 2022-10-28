@@ -26,11 +26,11 @@
 
 define(["../globals", "jquery", "underscore", "eventEmitter", "./fixed_view", "../helpers", "./iframe_loader", "./internal_links_support",
         "./media_overlay_data_injector", "./media_overlay_player", "../models/package", "../models/metadata", "../models/page_open_request",
-        "./reflowable_view", "./reflowable_view_calcPages", "./scroll_view", "../models/style_collection", "../models/switches", "../models/trigger",
+        "./reflowable_view", "./scroll_view", "../models/style_collection", "../models/switches", "../models/trigger",
         "../models/viewer_settings", "../models/bookmark_data", "../models/node_range_info", "./external_agent_support"],
     function (Globals, $, _, EventEmitter, FixedView, Helpers, IFrameLoader, InternalLinksSupport,
               MediaOverlayDataInjector, MediaOverlayPlayer, Package, Metadata, PageOpenRequest,
-              ReflowableView, ReflowableViewCalcPages, ScrollView, StyleCollection, Switches, Trigger,
+              ReflowableView, ScrollView, StyleCollection, Switches, Trigger,
               ViewerSettings, BookmarkData, NodeRangeInfo, ExternalAgentSupport) {
 /**
  * Options passed on the reader from the readium loader/initializer
@@ -236,7 +236,7 @@ var ReaderView = function (options) {
         self.emit(Globals.Events.READER_VIEW_CREATED, desiredViewType);
 
         _currentView.on(Globals.Events.CONTENT_DOCUMENT_LOADED, function ($iframe, spineItem) {
-            console.log('Globals.Events.CONTENT_DOCUMENT_LOADED');
+        //    console.log('Globals.Events.CONTENT_DOCUMENT_LOADED');
             var contentDoc = $iframe[0].contentDocument;
 
             Globals.logEvent("CONTENT_DOCUMENT_LOADED", "ON", "reader_view.js (current view) [ " + spineItem.href + " ]");
@@ -290,7 +290,7 @@ var ReaderView = function (options) {
         });
 
         _currentView.on(Globals.Events.FXL_VIEW_RESIZED, function () {
-            console.log('Globals.Events.FXL_VIEW_RESIZED')
+//            console.log('Globals.Events.FXL_VIEW_RESIZED')
             Globals.logEvent("FXL_VIEW_RESIZED", "EMIT", "reader_view.js");
             self.emit(Globals.Events.FXL_VIEW_RESIZED);
         })
@@ -710,13 +710,13 @@ var ReaderView = function (options) {
             _currentView.once(Globals.InternalEvents.CURRENT_VIEW_PAGINATION_CHANGED, function (pageChangeData) {
                 const obj = pageChangeData.paginationInfo.openPages[0];
                 _bookInfo[obj.idref] = obj.spineItemPageCount;
-                console.log('pageChangeData', _bookInfo,obj.spineItemPageCount);
+              //  console.log('pageChangeData', _bookInfo,obj.spineItemPageCount);
                 self.getPagesCount(1);
             });
         } else {
             _currentView.showFrame();
             spineItem = _spine.getItemById(currentPosition.idref);
-            console.log('_bookInfo',_bookInfo, currentPosition);
+       //     console.log('_bookInfo',_bookInfo, currentPosition);
             _currentView.once(Globals.InternalEvents.CURRENT_VIEW_PAGINATION_CHANGED, function (pageChangeData) {
                 self.openSpineItemElementCfi(currentPosition.idref, currentPosition._lastVisibleCfi.contentCFI);
                 self.emit(Globals.InternalEvents.CURRENT_VIEW_PAGINATION_CALCULATED, _bookInfo);
@@ -725,7 +725,7 @@ var ReaderView = function (options) {
         var openPageRequest = new PageOpenRequest(spineItem, self);
         openPageRequest.setFirstPage();
         openPage(openPageRequest, 2);
-        console.log('nextSpineItem',spineItem,openPageRequest);
+     //   console.log('nextSpineItem',spineItem,openPageRequest);
     };
 
 

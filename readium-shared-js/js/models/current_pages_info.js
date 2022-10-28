@@ -39,7 +39,7 @@ define(function() {
 
 var CurrentPagesInfo = function(spine, isFixedLayout) {
 
-    console.log('spine', spine)
+  //  console.log('spine', spine)
 
     /**
      * The reading direction

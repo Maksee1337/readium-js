@@ -29,6 +29,9 @@ require.config({
     {
         // ------ NPM MODULEs
 
+        tokenizr:
+            process._RJS_rootDir(0) + '/node_modules/tokenizr/lib/tokenizr',
+
         'readium_cfi_js':
             process._RJS_rootDir(0) + '/node_modules/readium-cfi-js/dist/readium-cfi.umd',
 
@@ -95,7 +98,7 @@ require.config({
             process._RJS_rootDir(0) + '/lib/rangy/rangy-cssclassapplier',
 
         "rangy-position":
-            process._RJS_rootDir(0) + '/lib/rangy/rangy-position'
+            process._RJS_rootDir(0) + '/lib/rangy/rangy-position',
     },
 
     shim:

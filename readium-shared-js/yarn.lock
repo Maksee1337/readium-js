@@ -2694,6 +2694,11 @@ toidentifier@1.0.1:
   resolved "https://registry.yarnpkg.com/toidentifier/-/toidentifier-1.0.1.tgz#3be34321a88a820ed1bd80dfaa33e479fbb8dd35"
   integrity sha512-o5sSPKEkg/DIQNmH43V0/uerLrpzVedkUh8tGNvaeXpfpuwjKenlSox/2O/BTlZUtEe+JG7s5YhEz608PlAHRA==
 
+tokenizr@^1.6.7:
+  version "1.6.7"
+  resolved "https://registry.yarnpkg.com/tokenizr/-/tokenizr-1.6.7.tgz#3ff4f046405192bcf5fe76f438a2538934d0a840"
+  integrity sha512-WWB9hGxE/PNjX8EyF1Lcu+IgljTY58d/3DPhWGzJxXTKBWtCY8voxvr0OzG3nc/WRubhXwlSx66/JhTypuG4Eg==
+
 tough-cookie@>=0.12.0:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/tough-cookie/-/tough-cookie-4.1.2.tgz#e53e84b85f24e0b65dd526f46628db6c85f6b874"

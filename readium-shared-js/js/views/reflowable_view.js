@@ -42,7 +42,7 @@ var ReflowableView = function(options, reader){
 
     window.ReflowableView = this;
     window.Helpers = Helpers;
-    console.log('ReflowableView', options, reader)
+   // console.log('ReflowableView', options, reader)
     $.extend(this, new EventEmitter());
 
     var self = this;
@@ -223,7 +223,7 @@ var ReflowableView = function(options, reader){
         var template = Helpers.loadTemplate("reflowable_book_page_frame", {});
         var $bookFrame = $(template);
 
-        console.log('_$el', _$el);
+       // console.log('_$el', _$el);
         $bookFrame = _$el.append($bookFrame);
 
         _$contentFrame = $("#reflowable-content-frame", $bookFrame);
@@ -234,9 +234,9 @@ var ReflowableView = function(options, reader){
         _$iframe_hidden = $("#epubContentIframeHidden", $bookFrame);
 
        // alert(2)
-        console.log('$bookFrame', $bookFrame)
-        console.log('_$contentFrame',_$contentFrame)
-        console.log('_$iframe', _$iframe)
+       // console.log('$bookFrame', $bookFrame)
+       // console.log('_$contentFrame',_$contentFrame)
+       // console.log('_$iframe', _$iframe)
         _$iframe.css("left", "");
         _$iframe.css("right", "");
         _$iframe.css("position", "relative");
@@ -255,7 +255,7 @@ var ReflowableView = function(options, reader){
     }
 
     function loadSpineItem(spineItem) {
-        console.log('loadSpineItem', spineItem)
+       // console.log('loadSpineItem', spineItem)
         if(_currentSpineItem != spineItem) {
 
             //create & append iframe to container frame
@@ -278,7 +278,7 @@ var ReflowableView = function(options, reader){
             _isWaitingFrameRender = true;
 
             var src = _spine.package.resolveRelativeUrl(spineItem.href);
-            console.log('SRC', src)
+          //  console.log('SRC', src)
             Globals.logEvent("CONTENT_DOCUMENT_LOAD_START", "EMIT", "reflowable_view.js [ " + spineItem.href + " -- " + src + " ]");
             self.emit(Globals.Events.CONTENT_DOCUMENT_LOAD_START, _$iframe, spineItem);
 
@@ -314,7 +314,7 @@ var ReflowableView = function(options, reader){
 
         //while we where loading frame new request came
         if(_deferredPageRequest && _deferredPageRequest.spineItem != _currentSpineItem) {
-            console.log('loadSpineItem2')
+           // console.log('loadSpineItem2')
             loadSpineItem(_deferredPageRequest.spineItem);
             return;
         }
@@ -330,7 +330,7 @@ var ReflowableView = function(options, reader){
 
         var epubContentDocument = _$iframe[0].contentDocument;
 
-        console.log('epubContentDocument5',epubContentDocument)
+        //console.log('epubContentDocument5',epubContentDocument)
         window.epubContentDocument = _$iframe[0].contentDocument;
 
         _$epubHtml = $("html", epubContentDocument);
@@ -467,7 +467,7 @@ var ReflowableView = function(options, reader){
     }
 
     function _openPageInternal(pageRequest) {
-        console.log('pageRequest',pageRequest)
+       // console.log('pageRequest',pageRequest)
         if(_isWaitingFrameRender) {
             _deferredPageRequest = pageRequest;
             return false;
@@ -476,7 +476,7 @@ var ReflowableView = function(options, reader){
         // if no spine item specified we are talking about current spine item
         if(pageRequest.spineItem && pageRequest.spineItem != _currentSpineItem) {
             _deferredPageRequest = pageRequest;
-            console.log('loadSpineItem1')
+           // console.log('loadSpineItem1')
             loadSpineItem(pageRequest.spineItem);
             return true;
         }
@@ -557,7 +557,7 @@ var ReflowableView = function(options, reader){
     }
 
     this.openPage = function(pageRequest) {
-        console.log('openPage', pageRequest)
+       // console.log('openPage', pageRequest)
         // Go to request page, it will save the new position in onPaginationChanged
         _openPageInternal(pageRequest);
         // Save it for when pagination is updated
@@ -702,7 +702,7 @@ var ReflowableView = function(options, reader){
 
 
     function updatePagination_() {
-            console.log('updatePagination_0')
+           // console.log('updatePagination_0')
         // At 100% font-size = 16px (on HTML, not body or descendant markup!)
         var MAXW = _paginationInfo.columnMaxWidth;
         var MINW = _paginationInfo.columnMinWidth;
@@ -857,10 +857,10 @@ var ReflowableView = function(options, reader){
         if (dim == 0) {
             console.error("Document dimensions zero?!");
         }
-        console.log('dim:',dim,_htmlBodyIsVerticalWritingMode,_$epubHtml[0].scrollHeight , _$epubHtml[0].scrollWidth)
+       // console.log('dim:',dim,_htmlBodyIsVerticalWritingMode,_$epubHtml[0].scrollHeight , _$epubHtml[0].scrollWidth)
         _paginationInfo.columnCount = (dim + _paginationInfo.columnGap) / (_paginationInfo.columnWidth + _paginationInfo.columnGap);
 
-        console.log('_paginationInfo.columnCount:', _paginationInfo.columnCount, _$epubHtml[0].scrollHeight, dim, _paginationInfo.columnGap, _paginationInfo.columnWidth)
+       // console.log('_paginationInfo.columnCount:', _paginationInfo.columnCount, _$epubHtml[0].scrollHeight, dim, _paginationInfo.columnGap, _paginationInfo.columnWidth)
         _paginationInfo.columnCount = Math.round(_paginationInfo.columnCount);
         if (_paginationInfo.columnCount == 0) {
             console.error("Column count zero?!");

@@ -42,9 +42,11 @@
   "main": "build-output/_umd-bundle/readium-shared-js.js",
   "types": "dev/readium-shared-js.d.ts",
   "dependencies": {
-    "readium-cfi-js": "github:readium/readium-cfi-js#0.31.0"
+    "readium-cfi-js": "github:readium/readium-cfi-js#0.31.0",
+    "tokenizr": "^1.6.7"
   },
   "devDependencies": {
+    "FontLoader": "smnh/FontLoader",
     "almond": "^0.3.3",
     "amdclean": "github:readium/amdclean#e4ffc3d8a634110ec7ce7e2474e859c021afe5fc",
     "backbone": "^1.3.3",
@@ -57,7 +59,6 @@
     "domReady": "github:requirejs/domReady#d85bdc38a6df868ead52ab3e80715aaf60e68765",
     "es6-shim": "^0.35.3",
     "eventemitter3": "latest",
-    "FontLoader": "smnh/FontLoader",
     "glob": "^7.1.2",
     "http-server": "github:readium/http-server#9c6e56279af34381a5dae640b7d73762e8135bd7",
     "jquery": "2.x.x",

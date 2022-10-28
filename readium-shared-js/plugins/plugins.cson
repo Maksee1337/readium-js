@@ -2,7 +2,10 @@
 plugins: [
    'highlights',
 #    'hypothesis',
+# 'polly',
+'tokenizer',
 
+'maneno',
 #   'example',
   'showInfo'
 ]
