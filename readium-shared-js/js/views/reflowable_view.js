@@ -166,6 +166,7 @@ var ReflowableView = function(options, reader){
 
     var _viewSettings = undefined;
     this.setViewSettings = function(settings, docWillChange) {
+        console.log(_viewSettings)
         _viewSettings = settings;
 
         _paginationInfo.columnGap = settings.columnGap;
@@ -174,7 +175,6 @@ var ReflowableView = function(options, reader){
         
         _fontSize = settings.fontSize;
         _fontSelection = settings.fontSelection;
-
         updateViewportSize();
 
         if (!docWillChange) {
@@ -296,7 +296,11 @@ var ReflowableView = function(options, reader){
             var font = (useDefault ?
                         {} :
                         reader.fonts[i - 1]);
-            Helpers.UpdateHtmlFontAttributes(_$epubHtml, _fontSize, font, function() {self.applyStyles();});
+            Helpers.UpdateHtmlFontAttributes(_$epubHtml, _fontSize, font, function() {
+                self.applyStyles();
+            });
+
+
         }
     }
 
@@ -445,6 +449,7 @@ var ReflowableView = function(options, reader){
 
         updateViewportSize();
         updatePagination();
+
     };
 
     this.applyBookStyles = function() {
@@ -919,6 +924,7 @@ var ReflowableView = function(options, reader){
         // to avoid the pagination process to trigger a resize event during its first
         // execution, provoking a flicker
         initResizeSensor();
+
     }
     var updatePagination = _.debounce(updatePagination_, 100);
 
@@ -1000,6 +1006,7 @@ var ReflowableView = function(options, reader){
             paginationInfo.addOpenPage(pageIndexes[i], _paginationInfo.columnCount, _currentSpineItem.idref, _currentSpineItem.index);
         }
 
+       console.log('xaas 21', paginationInfo.openPages[0])
         return paginationInfo;
 
     };

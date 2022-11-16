@@ -47,6 +47,7 @@ define(["../globals", "jquery", "underscore", "eventEmitter", "./fixed_view", ".
  * @constructor
  */
 var ReaderView = function (options) {
+
     $.extend(this, new EventEmitter());
 
     var self = this;
@@ -589,7 +590,6 @@ var ReaderView = function (options) {
      * @fires Globals.Events.SETTINGS_APPLIED
      */
     this.updateSettings = function (settingsData) {
-
 //console.debug("UpdateSettings: " + JSON.stringify(settingsData));
 
         _viewerSettings.update(settingsData);
@@ -708,6 +708,7 @@ var ReaderView = function (options) {
 
         if(spineItem) {
             _currentView.once(Globals.InternalEvents.CURRENT_VIEW_PAGINATION_CHANGED, function (pageChangeData) {
+
                 const obj = pageChangeData.paginationInfo.openPages[0];
                 _bookInfo[obj.idref] = obj.spineItemPageCount;
               //  console.log('pageChangeData', _bookInfo,obj.spineItemPageCount);

@@ -3,7 +3,7 @@ plugins: [
    'highlights',
 #    'hypothesis',
 # 'polly',
-'tokenizer',
+# 'tokenizer',
 
 'maneno',
 #   'example',

@@ -151,7 +151,6 @@ var CurrentPagesInfo = function(spine, isFixedLayout) {
 
         if(this.openPages.length == 0)
             return false;
-
         var firstOpenPage = this.openPages[0];
 
         // TODO: handling of non-linear spine items ("ancillary" documents), allowing page turn within the reflowable XHTML, but preventing previous/next access to sibling spine items. Also needs "go back" feature to navigate to source hyperlink location that led to the non-linear document.

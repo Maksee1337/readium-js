@@ -47,7 +47,7 @@ var MediaOverlayPlayer = function(reader, onStatusChanged) {
     
     var _SpeechSynthesisUtterance = undefined;
     //var _skipTTSEndEvent = false;
-    var TOKENIZE_TTS = false;
+    var TOKENIZE_TTS = true;
 
     var _embeddedIsPlaying = false;
     var _currentEmbedded = undefined;
