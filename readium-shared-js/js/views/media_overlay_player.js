@@ -78,12 +78,12 @@ var MediaOverlayPlayer = function(reader, onStatusChanged) {
 
 //
 // should use this.onSettingsApplied() instead!
-//    this.setRate = function(rate) {
-//        _audioPlayer.setRate(rate);
-//    };
-//    this.setVolume = function(volume) {
-//        _audioPlayer.setVolume(volume);
-//    };
+   this.setRate = function(rate) {
+       _audioPlayer.setRate(rate);
+   };
+   this.setVolume = function(volume) {
+       _audioPlayer.setVolume(volume);
+   };
 
 
     this.onSettingsApplied = function() {
@@ -128,7 +128,6 @@ var MediaOverlayPlayer = function(reader, onStatusChanged) {
     var _lastPaginationData = undefined;
     
     this.onPageChanged = function(paginationData) {
-        
         _lastPaginationData = paginationData;
         
         var wasPausedBecauseNoAutoNextSmil = _wasPausedBecauseNoAutoNextSmil;
@@ -160,7 +159,7 @@ var MediaOverlayPlayer = function(reader, onStatusChanged) {
         
         var fakeOpfRoot = "/99!";
         var epubCfiPrefix = "epubcfi";
-        
+
         if (paginationData.elementId || paginationData.initiator == self)
         {
             var spineItems = reader.getLoadedSpineItems();
@@ -1747,26 +1746,21 @@ console.debug("textAbsoluteRef: " + textAbsoluteRef);
 
     this.play = function ()
     {
-        if (_smilIterator && _smilIterator.smil && !_smilIterator.smil.id)
-        {
+       if (_smilIterator && _smilIterator.smil && !_smilIterator.smil.id) {
             initBlankPagePlayer();
             return;
         }
-        else if (_currentEmbedded)
-        {
+        else if (_currentEmbedded) {
             _embeddedIsPlaying = true;
             _currentEmbedded.play();
             onStatusChanged({isPlaying: true});
         }
-        else if (_currentTTS)
-        {
+        else if (_currentTTS)  {
             speakStart(undefined);
-        }
-        else
-        {
+        } else {
             if (!_audioPlayer.play())
             {
-                console.log("Audio player was dead, reactivating...");
+                console.log('xaaq', "Audio player was dead, reactivating...");
 
                 this.reset();
                 this.toggleMediaOverlay();
@@ -1971,7 +1965,7 @@ console.debug("textAbsoluteRef: " + textAbsoluteRef);
             playingPar = _smilIterator.currentPar;
             self.pause();
         }
-        
+
         _wasPlayingScrolling = false;
 
         //paginationData && paginationData.elementId
@@ -2037,6 +2031,8 @@ console.debug("textAbsoluteRef: " + textAbsoluteRef);
             element = reader.getFirstVisibleMediaOverlayElement();
         }
 
+        console.log('xaaq element', element)
+        console.log('xaaq reader', reader)
         if (!element)
         {
             self.reset();
@@ -2118,7 +2114,7 @@ console.debug("textAbsoluteRef: " + textAbsoluteRef);
             _smilIterator.reset();
             _smilIterator.findTextId(id);
         }
-        
+
         if (!_smilIterator.currentPar)
         {
             self.reset();

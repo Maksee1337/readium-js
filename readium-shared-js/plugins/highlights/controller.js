@@ -551,6 +551,7 @@ function($, _, Class, HighlightHelpers, HighlightGroup) {
             if (iframeDocument.getSelection) {
 
                 currentSelection = iframeDocument.getSelection();
+                console.log('currentSelection',currentSelection)
                 if (!currentSelection || currentSelection.rangeCount === 0) {
                     return undefined;
                 }

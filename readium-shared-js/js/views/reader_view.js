@@ -774,7 +774,6 @@ var ReaderView = function (options) {
             console.log("idref parameter value missing!");
             return undefined;
         }
-
         var spineItem = _spine.getItemById(idref);
         if (!spineItem) {
             console.log("Spine item with id " + idref + " not found!");
@@ -853,7 +852,8 @@ var ReaderView = function (options) {
         initViewForItem(pageRequest.spineItem, function (isViewChanged) {
 
             if (!isViewChanged) {
-                var docWillChange = true;
+
+                var docWillChange = maneno.updateStylesOnPageChanges;
                 _currentView.setViewSettings(_viewerSettings, docWillChange);
             }
 
@@ -878,6 +878,7 @@ var ReaderView = function (options) {
         }
 
         var pageData = new PageOpenRequest(spineItem, initiator);
+
         if (pageIndex) {
             pageData.setPageIndex(pageIndex);
         }
@@ -1242,7 +1243,6 @@ var ReaderView = function (options) {
      * Start/Resume playback of media overlays.
      */
     this.playMediaOverlay = function () {
-
         _mediaOverlayPlayer.play();
     };
 
@@ -1257,14 +1257,14 @@ var ReaderView = function (options) {
 
 //
 // should use Globals.Events.SETTINGS_APPLIED instead!
-//    this.setRateMediaOverlay = function(rate) {
-//
-//        _mediaOverlayPlayer.setRate(rate);
-//    };
-//    this.setVolumeMediaOverlay = function(volume){
-//
-//        _mediaOverlayPlayer.setVolume(volume);
-//    };
+   this.setRateMediaOverlay = function(rate) {
+
+       _mediaOverlayPlayer.setRate(rate);
+   };
+   this.setVolumeMediaOverlay = function(volume){
+
+       _mediaOverlayPlayer.setVolume(volume);
+   };
 
     /**
      * Get the first visible media overlay element from the currently active content document(s)

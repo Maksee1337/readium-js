@@ -118,6 +118,7 @@ var ReflowableView = function(options, reader){
 
         _$el = $(template);
         _$viewport.append(_$el);
+        console.log('xaaq 1', _$el, _$viewport);
         var settings = reader.viewerSettings();
 
         if (!settings || typeof settings.enableGPUHardwareAccelerationCSS3D === "undefined")
@@ -228,8 +229,6 @@ var ReflowableView = function(options, reader){
 
         _$contentFrame = $("#reflowable-content-frame", $bookFrame);
 
-
-
         _$iframe = $("#epubContentIframe", $bookFrame);
         _$iframe_hidden = $("#epubContentIframeHidden", $bookFrame);
 
@@ -295,11 +294,12 @@ var ReflowableView = function(options, reader){
             var useDefault = !reader.fonts || !reader.fonts.length || i <= 0 || (i-1) >= reader.fonts.length;
             var font = (useDefault ?
                         {} :
-                        reader.fonts[i - 1]);
+                        maneno.font);
+            font = _fontSelection === 2 ?  maneno.font : {};
             Helpers.UpdateHtmlFontAttributes(_$epubHtml, _fontSize, font, function() {
                 self.applyStyles();
+                _fontSelection = 0;
             });
-
 
         }
     }
@@ -309,6 +309,34 @@ var ReflowableView = function(options, reader){
         if(_$epubHtml) {
 
             _$epubHtml.css("column-gap", _paginationInfo.columnGap + "px");
+        }
+    }
+
+    /**
+     * _setFont from MANENO
+     * @private
+     */
+    function _setFont() {
+        if(maneno.font.fontFamily !== 'default') {
+            var FONT_FAMILY_ID = "readium_font_family_link";
+            var docHead = $("head", _$epubHtml);
+            var link = $("#" + FONT_FAMILY_ID, docHead);
+            setTimeout(function () {
+                link = $("<link/>", {
+                    "id": FONT_FAMILY_ID,
+                    "data-fontfamily": maneno.font.fontFamily,
+                    "rel": "stylesheet",
+                    "type": "text/css"
+                });
+                docHead.append(link);
+
+                link.attr({
+                    "href": maneno.font.url
+                });
+            }, 0);
+            _$epubHtml.css("font-family", maneno.font.fontFamily);
+
+            console.log('xaaq 3',docHead, link );
         }
     }
 
@@ -334,10 +362,9 @@ var ReflowableView = function(options, reader){
 
         var epubContentDocument = _$iframe[0].contentDocument;
 
-        //console.log('epubContentDocument5',epubContentDocument)
         window.epubContentDocument = _$iframe[0].contentDocument;
-
         _$epubHtml = $("html", epubContentDocument);
+        _setFont();
         _$htmlBody = $("body", _$epubHtml);
 
         // TODO: how to address this correctly across all the affected platforms?!

@@ -64,6 +64,7 @@ define(['URIjs', 'readium_shared_js/views/iframe_loader', 'underscore', './disco
 
             console.log("EPUB doc iframe LOAD URI:");
             console.log(loadedDocumentUri);
+            console.log('xaaw 1', loadedDocumentUri)
             iframe.setAttribute("data-loadUri", loadedDocumentUri);
             
             var shouldConstructDomProgrammatically = getCurrentResourceFetcher().shouldConstructDomProgrammatically();
@@ -111,6 +112,10 @@ define(['URIjs', 'readium_shared_js/views/iframe_loader', 'underscore', './disco
                 && !(bowser.ios && (parseInt(bowser.version, 10) < 7))
                 && !bowser.samsungBrowser;
 
+            if(ReadiumSDK.reader.plugins.tokenizer) {
+                contentDocumentData = ReadiumSDK.reader.plugins.tokenizer.tokenizeBody(contentDocumentData);
+            }
+
             if (isBlobHandled) {
                 var contentType = 'text/html';
                 if (attachedData.spineItem.media_type && attachedData.spineItem.media_type.length) {
@@ -118,6 +123,7 @@ define(['URIjs', 'readium_shared_js/views/iframe_loader', 'underscore', './disco
                 }
 
                 // prefer BlobBuilder as some browser supports Blob constructor but fails using it
+
                 if (window.BlobBuilder) {
                     var builder = new BlobBuilder();
                     builder.append(contentDocumentData);
@@ -281,6 +287,7 @@ define(['URIjs', 'readium_shared_js/views/iframe_loader', 'underscore', './disco
             };
 
             if (isBlobHandled) {
+                console.log('xaaw blob', documentDataUri)
                 iframe.setAttribute("src", documentDataUri);
             } else if (!chromeIOS) {
                 iframe.contentWindow.document.close();

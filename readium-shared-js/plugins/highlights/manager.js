@@ -138,6 +138,7 @@ var HighlightsManager = function (proxyObj, options) {
     };
 
     this.addSelectionHighlight = function(id, type, clearSelection, styles) {
+       console.log(id, type, clearSelection, styles)
         for(var spine in liveAnnotations) {
             var annotationsForView = liveAnnotations[spine];
             if (annotationsForView.getCurrentSelectionCFI()) {

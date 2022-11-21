@@ -1195,6 +1195,7 @@ var CfiNavigationLogic = function (options) {
             var $root = $(this.getBodyElement());
             if (!$root || !$root.length || !$root[0]) return undefined;
 
+
             var that = this;
 
             var firstPartial = undefined;
@@ -1207,6 +1208,7 @@ var CfiNavigationLogic = function (options) {
                     if (!item) continue;
 
                     var $item = $(item);
+                    const data = $item.data("mediaOverlayData");
 
                     if ($item.data("mediaOverlayData")) {
                         var visible = that.getElementVisibility($item, visibleContentOffsets);

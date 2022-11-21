@@ -33,7 +33,7 @@ define(['jquery', 'readium_cfi_js'], function($, EPUBcfi) {
  * @constructor
  */
 var MediaOverlayElementHighlighter = function(reader) {
-
+//correct mo-sub-sync
     this.includeParWhenAdjustingToSeqSyncGranularity = true;
 
     var DEFAULT_MO_ACTIVE_CLASS = "mo-active-default";

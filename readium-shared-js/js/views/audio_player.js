@@ -196,7 +196,8 @@ define(['jquery'],function($) {
             {
                 console.error("this.play()");
             }
-    
+
+            console.log('xaaq _currentEpubSrc', _currentEpubSrc)
             if(!_currentEpubSrc)
             {
                 return false;
@@ -376,6 +377,7 @@ define(['jquery'],function($) {
         
         this.playFile = function(smilSrc, epubSrc, seekBegin) //element
         {
+
             _playId++;
             if (_playId > 99999)
             {
@@ -414,7 +416,7 @@ define(['jquery'],function($) {
             }
     
             var audioNeedsNewSrc = !_currentEpubSrc || _currentEpubSrc !== epubSrc;
-    
+
             if (!audioNeedsNewSrc)
             {
                 if (DEBUG)

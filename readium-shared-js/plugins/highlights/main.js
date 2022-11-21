@@ -7,6 +7,7 @@ define(['readium_js_plugins', 'readium_shared_js/globals', './manager'], functio
 
         var self = this;
 
+        window.hl = self;
         function isInitialized() {
             if (!_initialized) {
                 api.plugin.warn('Not initialized!')

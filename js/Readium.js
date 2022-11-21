@@ -41,6 +41,7 @@ define(['readium_shared_js/globals', 'text!version.json', 'jquery', 'underscore'
             function injectedScript() {
 
                 navigator.epubReadingSystem = window.parent.navigator.epubReadingSystem;
+
             }
 
             var sourceParts = src.split("/");
